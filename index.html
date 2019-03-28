@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>API Project</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
@@ -16,6 +17,9 @@
         <div class="buttons">
             <button onclick=loadData()>Load User Data</button>
             <button onclick=renderData()>Display User</button>
+            <button onclick=saveUser()>Save User Page</button>
+            <button onclick=loadUser()>Load User Page</button>
+            <select name="" id="mySelect"></select>
         </div>
         <div class="user-container"></div>
         <div class="quote-container"></div>
@@ -33,36 +37,37 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script id="user-template" type="text/x-handlebars-template">
-        <div id = "profile-pic" style = "background-image: url({{picture.medium}})"></div>
+        <div id = "profile-pic" style = "background-image: url({{picture}})"></div>
         <div class="user-info">
-            <div>{{toProperCase name.first}} {{toProperCase name.last}}</div>
-            <div>{{toProperCase location.city}}, {{toProperCase location.state}}</div>
+            <div>{{toProperCase firstName}} {{toProperCase lastName}}</div>
+            <div>{{toProperCase city}}, {{toProperCase state}}</div>
         </div>
     </script>
     <!-- ----------------------------------------------------->
     <script id="user-friends-template" type="text/x-handlebars-template">
         <ul class="user-friends">
             {{#each friends}}
-            <li>{{toProperCase this.name.first}} {{toProperCase this.name.last}}</li> <br>
+            <li>{{toProperCase this}}</li> <br>
             {{/each}}
+
         </ul>
     </script>
     <!-- ---------------------------------------------------- -->
     <script id="pokemon-template" type="text/x-handlebars-template">
-            <span id = "pokemon-image" style = "background-image: url({{sprites.front_default}})"></span>
+            <span id = "pokemon-image" style = "background-image: url({{picture}})"></span>
             <span id= "pokemon-text">Favorite Pokemon: {{toProperCase name}}</span>
     </script>
     <!-- ------------------------------------------------------ -->
     <script id="meat-template" type="text/x-handlebars-template">
         <div class="meat-text">
                 <p>About me:</p>
-                {{text}}
+                {{meat}}
         </div>
     </script>
     <!-- ------------------------------------------------------ -->
     <script id="quote-template" type="text/x-handlebars-template">
         <p>Favorite quote:</p>
-        <span><i>"{{quote}}"</i> <br>
+        <span><i>"{{text}}"</i> <br>
             - {{author}}</span>
     </script>
     <!-- ------------------------------------------------------ -->

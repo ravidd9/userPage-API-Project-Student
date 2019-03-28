@@ -20,6 +20,7 @@ body {
     align-self: start;
     grid-row: 1;
     grid-column: 1;
+    /* text-transform: capitalized */
     font-size: 25px;
     background-color: #3498db;
     padding: 1vmax;
